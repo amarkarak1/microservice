@@ -49,7 +49,7 @@ pipeline {
         stage('Deploy')
         {
             steps{
-                script{docker.withRegistry('https://448947842740.dkr.ecr.448947842740.dkr.ecr.us-east-2.amazonaws.com','ecr:448947842740.dkr.ecr.us-east-2:myawscreds'){
+                script{docker.withRegistry('https://448947842740.dkr.ecr.448947842740.dkr.ecr.us-east-2.amazonaws.com','ecr:448947842740.dkr.ecr.us-east-2.amazonaws.com:myawscreds'){
                 def myImage = docker build 'samplerepo'
                 myImage.push('First image')
                 }}}}
