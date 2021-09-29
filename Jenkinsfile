@@ -4,7 +4,13 @@
 
 pipeline {
     agent any
-
+     environment {
+        AWS_ACCOUNT_ID="653709203391"
+        AWS_DEFAULT_REGION="us-east-2" 
+        IMAGE_REPO_NAME="samplerepo"
+        IMAGE_TAG="first image"
+        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
+    }
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "Maven"
@@ -39,25 +45,23 @@ pipeline {
     }
                  }
   }
-        stage('Deploy')
-        {
-            when{
-            branch 'develop'
-            }
-            steps{
-                script{
-                    docker.withRegistry(
-                    'https://448947842740.dkr.ecr.448947842740.dkr.ecr.us-east-2.amazonaws.com',
-                        'ecr:448947842740.dkr.ecr.us-east-2:myawscreds'){
-                        def myImage = docker.build('samplerepo')
-                        myImage.push('first image')
-                        }
-                        
-                    
-                        
-                }
-            }
+         stage('Building image') {
+             when{
+             branch 'develop'}
+      steps{
+        script {
+          dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
         }
+      }
+    }
+        stage('Pushing to ECR') {
+     steps{  
+         script {
+                sh "docker tag ${IMAGE_REPO_NAME}:${IMAGE_TAG} ${REPOSITORY_URI}:$IMAGE_TAG"
+                sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+         }
+        }
+      }
 
 
         }
