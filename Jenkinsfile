@@ -50,7 +50,7 @@ pipeline {
              branch 'develop'}
       steps{
         script {
-          dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+          dockerImage = docker.build("${IMAGE_REPO_NAME}:${IMAGE_TAG}")
         }
       }
     }
