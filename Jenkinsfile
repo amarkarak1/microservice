@@ -48,7 +48,7 @@ pipeline {
                 script{
                     docker.withRegistry(
                     'https://448947842740.dkr.ecr.448947842740.dkr.ecr.us-east-2.amazonaws.com',
-                        'ecr:448947842740.dkr.ecr.us-east-2.amazonaws.com:myawscreds'){
+                        'ecr:448947842740.dkr.ecr.us-east-2:myawscreds'){
                         def myImage = docker.build('samplerepo')
                         myImage.push('first image')
                         }
