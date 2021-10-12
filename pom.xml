@@ -36,7 +36,7 @@
           <manifest>
             <addClasspath>true</addClasspath>
             
-            <mainClass>JavaApp.Test</mainClass>
+            <mainClass>javaApp.Test</mainClass>
           </manifest>
         </archive>
       </configuration>
