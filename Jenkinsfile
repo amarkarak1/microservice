@@ -20,6 +20,16 @@ pipeline {
                 }
             }
         }
+        stage('Logging into AWS ECR') {
+            agent any
+            steps {
+                
+                script {
+                sh "aws ecr get-login-password --region ${aws_id["AWS_DEFAULT_REGION"]} | docker login --username AWS --password-stdin ${aws_id["AWS_ACCOUNT_ID"]}.dkr.ecr.${aws_id["AWS_DEFAULT_REGION"]}.amazonaws.com"
+                }
+                 
+            }
+        }
        stage('Cleanup Workspace') {
             agent any
             steps {
