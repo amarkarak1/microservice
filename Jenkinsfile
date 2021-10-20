@@ -16,7 +16,7 @@ pipeline {
                 script{
                     gv = load "script.groovy"
                     aws_id = gv.returncreds()
-                    sh """echo ${aws_id["Prajwal"]}"""
+                    sh """echo ${aws_id["REPOSITORY_URI"]}"""
                 }
             }
         }
