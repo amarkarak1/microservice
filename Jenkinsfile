@@ -22,7 +22,7 @@ pipeline {
                 script{
                     gv = load "script.groovy"
                     aws_id = gv.returncreds()
-                    sh """echo ${aws_id}"""
+                    sh """echo ${aws_id["AWS_ACCOUNT_ID"]}"""
                 }
             }
         }
