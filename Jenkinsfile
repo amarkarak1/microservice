@@ -1,3 +1,4 @@
+
 def gv
 def aws_id
 pipeline {
@@ -82,6 +83,7 @@ pipeline {
             dockerImage = docker.build "${aws_id["IMAGE_REPO_NAME"]}:${env.BUILD_ID}"
         }
       }
+
     }
    
     // Uploading Docker images into AWS ECR
@@ -95,6 +97,15 @@ pipeline {
         }
       }
         
+
+    }
+}
+
+    }
+   
+  
+        
+
 
     }
 }
