@@ -97,14 +97,14 @@ pipeline {
       }
       
           stage ('K8S Deploy') {
-       
+              steps{
                 kubernetesDeploy(
                     configs: 'https:github.com/prajwalyb/microservice/final-deploy.yml',
                     kubeconfigId: 'K8S',
                     enableConfigSubstitution: true
                     )               
         }
-    
+          }
 
 
     }
