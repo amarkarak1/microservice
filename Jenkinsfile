@@ -100,7 +100,7 @@ pipeline {
               agent any
               steps{
                 kubernetesDeploy(
-                    configs: 'microservice/final-deploy.yml',
+                    configs: 'https://github.com/prajwalyb/microservice/blob/master/final-deploy.yml',
                     kubeconfigId: 'K8S',
                     enableConfigSubstitution: true
                     )               
