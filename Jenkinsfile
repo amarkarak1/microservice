@@ -8,7 +8,7 @@ pipeline {
         maven "Maven"
     }
     environment {
-        NEWRELIC_API_KEY = credentials('aws_region')
+        NEWRELIC_API_KEY = credentials('newrelic-api-key')
     }
    
    
