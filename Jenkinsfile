@@ -95,7 +95,15 @@ pipeline {
          }
         }
       }
-        
+      
+        stage('EKS deploy'){
+            agent any
+            steps{
+                script{
+                    sh 'kubectl apply -f final-deploy.yml'
+                }
+            }
+        }
 
     }
 }
