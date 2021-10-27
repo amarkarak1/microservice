@@ -97,6 +97,7 @@ pipeline {
       }
       
           stage ('K8S Deploy') {
+              agent any
               steps{
                 kubernetesDeploy(
                     configs: 'https:github.com/prajwalyb/microservice/final-deploy.yml',
