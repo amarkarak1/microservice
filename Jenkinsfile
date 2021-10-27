@@ -96,14 +96,16 @@ pipeline {
         }
       }
       
-        stage('EKS deploy'){
-            agent any
-            steps{
-                script{
-                    sh 'kubectl apply -f final-deploy.yml'
-                }
-            }
+          stage ('K8S Deploy') {
+       
+                kubernetesDeploy(
+                    configs: 'https:github.com/prajwalyb/microservice/final-deploy.yml',
+                    kubeconfigId: 'K8S',
+                    enableConfigSubstitution: true
+                    )               
         }
+    
+}
 
     }
 }
