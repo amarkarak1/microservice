@@ -99,10 +99,11 @@ pipeline {
           stage ('K8S Deploy') {
               agent any
               steps{
-                kubernetesDeploy(
-                    
-                    configs: 'https://github.com/prajwalyb/microservice/blob/master/final-deploy.yml', kubeConfig: [path: ''], kubeconfigId: 'K8S', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
-                    )               
+               kubernetesDeploy(
+                    configs: 'finaldeploy.yml',
+                    kubeconfigId: 'K8S',
+                    enableConfigSubstitution: true
+                    )                       
         }
           }
 
