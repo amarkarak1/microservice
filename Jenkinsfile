@@ -96,12 +96,15 @@ pipeline {
         }
       }
       
-         stage ('K8S Deploy'){
-             agent any
-             steps{
-                    sh '/usr/local/bin/kubectl version'
-      } 
-       }
+         
+  stage('Apply Kubernetes files') {
+      agent any
+      steps{
+    withKubeConfig([credentialsId: 'K8S' ) {
+      sh 'kubectl version'
+    }
+  }
+}
 
 
     }
