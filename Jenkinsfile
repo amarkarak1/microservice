@@ -96,16 +96,12 @@ pipeline {
         }
       }
       
-          stage ('K8S Deploy') {
-              agent any
-              steps{
-               kubernetesDeploy(
-                    configs: 'finaldeploy.yml',
-                    kubeconfigId: 'K8S',
-                    enableConfigSubstitution: true
-                    )                       
-        }
-          }
+         stage ('K8S Deploy'){
+             agent any
+             steps{
+                    sh 'kubectl apply -f final-deploy.yaml'
+      } 
+       }
 
 
     }
