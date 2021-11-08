@@ -100,7 +100,7 @@ pipeline {
   stage('Apply Kubernetes files') {
       agent any
       steps{
-    withKubeConfig([credentialsId: 'K8S' ) {
+    withKubeConfig([credentialsId: 'K8S']) {
       sh 'kubectl version'
     }
   }
