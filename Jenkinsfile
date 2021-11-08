@@ -99,7 +99,7 @@ pipeline {
          stage ('K8S Deploy'){
              agent any
              steps{
-                    sh 'kubectl apply -f final-deploy.yaml'
+                    sh '~/home/ec2-user/bin/kubectl apply -f final-deploy.yaml'
       } 
        }
 
