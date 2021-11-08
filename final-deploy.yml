@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tml-demo1
+  name: tml-demo2
   namespace: default
 spec:
   replicas: 2
@@ -26,10 +26,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tmldevops
+  name: tml-demo2
 spec:
   selector:
-    app: tml-demo1
+    app: tml-demo2
   ports:
     - protocol: TCP
       port: 8080
