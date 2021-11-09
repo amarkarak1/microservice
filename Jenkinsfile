@@ -101,7 +101,7 @@ pipeline {
       agent any
       steps{
    
-      sh 'kubectl version --short --client'
+      sh '/home/ec2-user/bin/kubectl kubectl version --short --client'
     
   }
 }
