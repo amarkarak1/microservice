@@ -101,7 +101,7 @@ pipeline {
       agent any
       steps{
    
-      sh 'kubectl version'
+      sh 'kubectl version --short --client'
     
   }
 }
