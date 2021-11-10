@@ -99,10 +99,11 @@ pipeline {
          
   stage('Apply Kubernetes files') {
       agent any
+      steps{
     withKubeConfig([credentialsId: 'kubectl-id']) {
       sh 'kubectl apply -f my-kubernetes-directory'
 }
-      }
+      } }
 
     }
 }
