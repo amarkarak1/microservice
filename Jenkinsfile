@@ -99,13 +99,10 @@ pipeline {
          
   stage('Apply Kubernetes files') {
       agent any
-      steps{
-   
-      sh 'sudo /home/ec2-user/bin/kubectl kubectl version --short --client'
-    
-  }
+    withKubeConfig([credentialsId: 'kubectl-id']) {
+      sh 'kubectl apply -f my-kubernetes-directory'
 }
-
+      }
 
     }
 }
