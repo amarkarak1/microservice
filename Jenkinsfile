@@ -101,7 +101,7 @@ pipeline {
       agent any
       steps{
     withKubeConfig([credentialsId: 'kubectl-id']) {
-      sh 'kubectl apply -f my-kubernetes-directory'
+      sh '/var/lib/jenkins/bin/kubectl apply -f my-kubernetes-directory'
 }
       } }
 
