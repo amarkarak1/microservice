@@ -101,7 +101,7 @@ pipeline {
       agent any
       steps{
     withKubeConfig([credentialsId: 'kubectl-id']) {
-      sh '/var/lib/jenkins/bin/kubectl get deployments'
+      sh '/var/lib/jenkins/bin/kubectl version'
 }
       } }
 
