@@ -101,7 +101,7 @@ pipeline {
       agent any
       steps{
    
-      sh '/var/lib/jenkins/bin/kubectl apply -f final-deploy.yaml'
+      sh '/var/lib/jenkins/bin/kubectl apply -f final-deploy.yml'
 
       } }
 
