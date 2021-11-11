@@ -100,9 +100,9 @@ pipeline {
   stage('Apply Kubernetes files') {
       agent any
       steps{
-    withKubeConfig([credentialsId: 'kubectl-id']) {
+   
       sh '/var/lib/jenkins/bin/kubectl apply -f final-deploy.yaml'
-}
+
       } }
 
     }
