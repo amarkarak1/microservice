@@ -20,16 +20,7 @@ pipeline {
                 }
             }
         }
-        stage('Logging into AWS ECR') {
-            agent any
-            steps {
-                
-                script {
-                sh "aws ecr get-login-password --region ${aws_id["AWS_DEFAULT_REGION"]} | docker login --username AWS --password-stdin ${aws_id["AWS_ACCOUNT_ID"]}.dkr.ecr.${aws_id["AWS_DEFAULT_REGION"]}.amazonaws.com"
-                }
-                 
-            }
-        }
+
        stage('Cleanup Workspace') {
             agent any
             steps {
@@ -39,15 +30,7 @@ pipeline {
                 """
             }
         }
-        stage('git')
-        {
-            agent any
-            steps{
-                git credentialsId: '63d5ff9f-a87e-4c3c-9d84-09f7f55aa496', url: 'https://github.com/prajwalyb/microservice.git'
-                
-            }
-            
-        }
+        
         stage('Build') {
             agent any
             steps {
