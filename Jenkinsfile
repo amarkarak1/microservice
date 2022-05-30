@@ -80,30 +80,13 @@ pipeline {
         agent any
       steps{
         script {
-            dockerImage = docker.build "${aws_id["IMAGE_REPO_NAME"]}:${env.BUILD_ID}"
+            dockerImage = sh "sudo docker build -t microservice ."
         }
       }
     }
    
-    // Uploading Docker images into AWS ECR
-    stage('Pushing to ECR') {
-        agent any
-     steps{  
-         script {
-             sh "docker tag ${aws_id["IMAGE_REPO_NAME"]}:${env.BUILD_ID} ${aws_id["REPOSITORY_URI"]}:${env.BUILD_ID}"
-             sh "docker push ${aws_id["REPOSITORY_URI"]}:${env.BUILD_ID}"
-         }
-        }
-      }
-      
-         
-  stage('Apply Kubernetes files') {
-      agent any
-      steps{
-   
-      sh '/var/lib/jenkins/bin/kubectl apply -f final-deploy.yml'
-
-      } }
+  
+    
 
     }
 }
