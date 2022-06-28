@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
 	<properties>
   
-  <sonar.host.url>http://172.31.224.132:9000</sonar.host.url>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 </properties>
   <build>
 		<plugins>
