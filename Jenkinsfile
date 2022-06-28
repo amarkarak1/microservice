@@ -52,7 +52,7 @@ pipeline {
             agent any
                  steps{
     withSonarQubeEnv(installationName: 'SonarCloud') { // You can override the credential to be used
-      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.5.0.1254:sonar'
     }
                  }
         }
