@@ -56,7 +56,7 @@ pipeline {
         agent any
       steps{
         script {
-            dockerImage = sh "sudo docker build -t microservice ."
+            dockerImage = sh " docker build -t microservice ."
         }
       }
     }
